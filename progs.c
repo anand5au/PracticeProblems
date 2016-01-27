@@ -409,6 +409,32 @@ void ConvertTree(Node root)
 }
 
 /************************************************************************************************************************/
+// Given a Binary Search Tree (BST), convert it to a Binary Tree such that every key of the 
+// original BST is changed to sum of its children.
+// also check if node value shud be changed to 0 if no children
+void Convert(node *&root) // post-order
+{
+	if(root == NULL) return;
+       
+        Convert(root->left);
+        Convert(root->right);
+        
+        if(root->left) root->val = root->left->val;
+        if(root->right) root->val += root->right->val;
+}
+
+void Convert(node *&root) // pre-order
+{
+    if (root == NULL) return;
+    
+    if (root->left) root->val = root->left->val;
+	if (root->right) root->val += root->right->val;
+    
+	Convert(root->left);
+    Convert(root->right);
+}
+
+/************************************************************************************************************************/
 
 /*
  There are some glasses with equal volume of 1 litre. The glasses kept as follows
@@ -446,7 +472,7 @@ main()
         print val;
 }
 
-/************************************************************************************************************************/
+/ ************************************************************************************************************************/
 
 bool hasPathSum(Node node, int sum)
 {
@@ -472,6 +498,70 @@ bool hasPathSum(Node node, int sum)
 		printf("%d ",node->value);
 	return retVal;
 }
+
+// (sum of values at odd height)-(sum of values at even height)
+double sum(Node root)
+{
+ if(root == null)
+ {
+  return 0;
+ }
+ 
+ return -(root.value + sum(root.left) + sum(root.right));
+}
+
+
+public class Petrol 
+{
+	int petrol;
+	int distance;
+		
+	public Petrol(int p, int d)
+	{
+		petrol = p;
+		distance = d;
+	}
+	
+	public static void main(String args[])
+	{
+		ArrayList<Petrol> pd = new ArrayList<Petrol>();
+		pd.add(new Petrol(4,6));
+		pd.add(new Petrol(6,5));
+		pd.add(new Petrol(7,3));
+		pd.add(new Petrol(4,5));
+		
+		int index=0;
+		boolean flag = false;
+		int totalPetrol=0,totalDist=0;
+		for(Petrol p:pd)
+		{
+			totalPetrol+=p.petrol;
+			totalDist+=p.distance;
+			// the 2nd condition is added so that we don't miss a valid station immediately after an invalid station
+			if((totalPetrol < totalDist) && (p.petrol < p.distance))
+				flag = false;
+			else if(!flag)
+			{
+				index = pd.indexOf(p);
+				flag = true;
+			}
+		}
+		if(totalPetrol >= totalDist)
+			System.out.println("Start index is "+index);
+		else
+			System.out.println("No Start");
+	}
+}
+
+void VerticalSum(Node root, int level,int vsum[])
+{
+	if(root == NULL)
+		return;
+	VerticalSum(root->left,level-1,vsum);
+	vsum[level]+=root->value;
+	VerticalSum(root->right,level+1,vsum);
+}
+
 
 /************************************************************************************************************************/
 int getDeepestOdd(node *root, int level)
@@ -621,21 +711,292 @@ float power(float x, int y)
     }
 } 
 
-void RemoveChar(char* pStr, char ch)
-{
-   if(pStr == NULL)
-	  return;
+/*
 
-	int len = strlen(pStr);
-	int index = 0;
-	int res = 0;
-	while (index < len)
+Following is the O(n) time and O(1) extra space approach. Let us understand the approach with a simple example where arr[] = {2, 3, 3, 5, 3, 4, 1, 7}, k = 8, n = 8 (number of elements in arr[]).
+
+1) Iterate though input array arr[], for every element arr[i], increment arr[arr[i]%k] by k (arr[] becomes {2, 11, 11, 29, 11, 12, 1, 15 })
+
+2) Find the maximum value in the modified array (maximum value is 29). Index of the maximum value is the maximum repeating element (index of 29 is 3).
+
+3) If we want to get the original array back, we can iterate through the array one more time and do arr[i] = arr[i] % k where i varies from 0 to n-1.
+
+*/
+
+/*
+What happens when you type a URL into a browser?
+
+1. Browser contacts DNS to resolve IP address
+2.DNS replies back with the IP address of the site
+3. Browser opens TCP connection to the server at port 80
+4. Fetches index.html file from /home directory.!
+5.Displays the content in browser
+6.Stores the IP in DNS cache for future use.
+7.When broswer closed, TCP conn is terminated..!!!
+*/
+
+/*
+Activity selection problem
+
+1) Sort the activities according to their finishing time
+2) Select the first activity from the sorted array and print it.
+3) Do following for remaining activities in the sorted array.
+	a) If the start time of this activity is greater than the finish time of previously selected activity then select this activity and print it.
+*/
+
+void printMaxActivities(int s[], int f[], int n)
+{
+    int i, j;
+    i = 0;
+    printf("%d ", i);
+    for (j = 1; j < n; j++)
+    {
+      if (s[j] >= f[i])
+      {
+          printf ("%d ", j);
+          i = j;
+      }
+    }
+}
+
+/* Dutch National Flag */
+
+void sort012(int a[], int arr_size)
+{
+   int lo = 0;
+   int hi = arr_size - 1;
+   int mid = 0;
+ 
+   while(mid <= hi)
+   {
+      switch(a[mid])
+      {
+         case 0:
+           swap(&a[lo++], &a[mid++]);
+           break;
+         case 1:
+           mid++;
+           break;
+         case 2:
+           swap(&a[mid], &a[hi--]);
+           break;
+      }
+   }
+}
+
+/* 
+Check if all leaves are at same level
+1. Do a recursive call with level, cumulativeLevel and maxLevel as params
+2. Store the maxLevel and add level at each leaf node
+3. Do cumulativeLevel % maxLevel
+*/
+
+/* LCA with only parent node */
+
+private int CalculateNodeHeight(Node node)
+{
+	if (node.Parent == null)
+		return 1;
+	return CalculateNodeHeight(node.Parent) + 1;
+}
+
+public static Node FindLowestCommonAncestor(Node node1, Node node2)
+{
+	int nodeLevel1 = node1.CalculateNodeHeight();
+	int nodeLevel2 = node2.CalculateNodeHeight();
+
+	while (nodeLevel1 > 0 && nodeLevel2 > 0)
 	{
-	  if (pStr[index] != ch)
-	  {
-		pStr[res++] = pStr[index];
-	  }
-	  index++;
-	 }
-	 pStr[res] = "\0";
+		if (nodeLevel1 > nodeLevel2)
+		{
+			node1 = node1.Parent;
+			nodeLevel1--;
+		}
+		else if (nodeLevel2 > nodeLevel1)
+		{
+			node2 = node2.Parent;
+			nodeLevel2--;
+		}
+		else
+		{
+			if (node1 == node2)
+			{
+				return node1;
+			}
+
+			node1 = node1.Parent;
+			node2 = node2.Parent;
+			nodeLevel1--;
+			nodeLevel2--;
+		}
+	}
+}
+
+int IsBST(Node root)
+{
+	if(!root)
+		return 1;
+	if(root->left)
+	{
+		if(root->value >= root->left->value)
+			return IsBST(root->left);
+		else
+			return 0;
+	}
+	if(root->right)
+	{
+		printf("right half\n");
+		if(root->value <= root->right->value)
+			return IsBST(root->right);
+		else
+			return 0;
+	}
+}
+
+/******************************************************************************************************************/
+/*
+
+find smallest window in first array which covers all second array elements.
+
+input= {6,7,1,3,2,4,5,2,3,1,2,5}
+keys = {2,5,1}
+
+answer: 9th to 11th index
+
+Soln: Have another array sw[] of size of the keys.
+1. For every element of keys[] get the position of it in input[] and fill it in corresponding index of sw[].
+2. When positions of all elements of keys[] are available find the width of the current window and keep looking for width as we iterate the input[]
+3. At the end of iteration we get min window :)
+
+*/
+
+/******************************************************************************************************************/
+/*
+In a incoming stream of numbers get min N numbers at any time
+
+Solution: Maxheap
+*/
+
+/******************************************************************************************************************/
+/*
+
+A utility function to find the maximum sum between any
+two leaves.This function calculates two values:
+1) Maximum path sum between two leaves which is stored
+   in res.
+2) The maximum root to leaf path sum which is returned.
+If one side of root is empty, then it returns INT_MIN
+
+*/
+
+int maxPathSumUtil(struct Node *root, int &res)
+{
+    // Base cases
+    if (root==NULL) return 0;
+    if (!root->left && !root->right) return root->data;
+ 
+    // Find maximum sum in left and right subtree. Also
+    // find maximum root to leaf sums in left and right
+    // subtrees and store them in ls and rs
+    int ls = maxPathSumUtil(root->left, res);
+    int rs = maxPathSumUtil(root->right, res);
+ 
+ 
+    // If both left and right children exist
+    if (root->left && root->right)
+    {
+        // Update result if needed
+        res = max(res, ls + rs + root->data);
+ 
+        // Return maxium possible value for root being
+        // on one side
+        return max(ls, rs) + root->data;
+    }
+ 
+    // If any of the two children is empty, return
+    // root sum for root being on one side
+    return (!root->left)? rs + root->data:
+                          ls + root->data;
+}
+
+/******************************************************************************************************************/
+
+/*
+SortedMerge of 2 LinkedLists
+*/
+
+struct node* SortedMerge(struct node* a, struct node* b) 
+{
+  struct node* result = NULL;
+ 
+  /* Base cases */
+  if (a == NULL) 
+     return(b);
+  else if (b==NULL) 
+     return(a);
+ 
+  /* Pick either a or b, and recur */
+  if (a->data <= b->data) 
+  {
+     result = a;
+     result->next = SortedMerge(a->next, b);
+  }
+  else
+  {
+     result = b;
+     result->next = SortedMerge(a, b->next);
+  }
+  return(result);
+}
+
+/******************************************************************************************************************/
+
+/*
+Merge k sorted arrays
+
+1. Create an output array of size n*k.
+2. Create a min heap of size k and insert 1st element in all the arrays into a the heap
+3. Repeat following steps n*k times.
+     a) Get minimum element from heap (minimum is always at root) and store it in output array.
+     b) Replace heap root with next element from the array from which the element is extracted. If the array doesn’t have any more elements, then replace root with infinite. After replacing the root, heapify the tree.
+
+*/
+
+/******************************************************************************************************************/
+
+/*
+Check if 2 binary trees are same (numbers can be repeated.
+
+Fill both trees into 2 HashSets and compare
+*/
+
+/******************************************************************************************************************/
+
+/*
+
+The minute hand moves 360 degree in 60 minute(or 6 degree in one minute) and hour hand moves 360 degree in 12 hours(or 0.5 degree in 1 minute). In h hours and m minutes, the minute hand would move (h*60 + m)*6 and hour hand would move (h*60 + m)*0.5.
+
+*/
+
+int calcAngle(double h, double m)
+{
+    // validate the input
+    if (h <0 || m < 0 || h >12 || m > 60)
+        printf("Wrong input");
+ 
+    if (h == 12) h = 0;
+    if (m == 60) m = 0;
+ 
+    // Calculate the angles moved by hour and minute hands
+    // with reference to 12:00
+    int hour_angle = 0.5 * (h*60 + m);
+    int minute_angle = 6*m;
+ 
+    // Find the difference between two angles
+    int angle = abs(hour_angle - minute_angle);
+ 
+    // Return the smaller angle of two possible angles
+    angle = min(360-angle, angle);
+ 
+    return angle;
 }
