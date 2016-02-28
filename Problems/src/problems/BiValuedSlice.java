@@ -2,23 +2,24 @@ package problems;
 
 import java.util.*;
 
-public class BiValuedSlice 
+public class BiValuedSlice
 {
-	public static int solution(int[] A) 
+	public static int solution(int[] A)
 	{
-		int idx = 0, numCount=0;
+		int idx = 0, numCount = 0;
 		Set<Integer> visited = new HashSet<Integer>();
-		
-		while(idx < A.length)
+
+		while (idx < A.length)
 		{
 			int tmp = 0;
-			for(int i=idx;i<A.length;i++)
+			for (int i = idx; i < A.length; i++)
 			{
 				visited.add(A[i]);
-				if(visited.size() == 3)
+				if (visited.size() == 3)
 				{
 					visited.clear();
-					if(tmp > numCount) numCount = tmp;
+					if (tmp > numCount)
+						numCount = tmp;
 					break;
 				}
 				tmp++;
@@ -26,9 +27,9 @@ public class BiValuedSlice
 			idx++;
 		}
 		return numCount;
-    }
-	
-	public static void main(String[] args) 
+	}
+
+	public static void main(String[] args)
 	{
 	}
 
