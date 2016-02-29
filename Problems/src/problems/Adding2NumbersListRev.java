@@ -49,11 +49,11 @@ public class Adding2NumbersListRev
 
 	public static void main(String[] args)
 	{
-		// LinkedList<Integer> l1 = new LinkedList<Integer>();
-		// l1.insertAtEnd(7);
-		// l1.insertAtEnd(1);
-		// l1.insertAtEnd(6);
-		// l1.printList();
+		 LinkedList<Integer> l1 = new LinkedList<Integer>();
+		 l1.insertAtEnd(7);
+		 l1.insertAtEnd(1);
+		 l1.insertAtEnd(6);
+		 l1.printList();
 
 		LinkedList<Integer> l2 = new LinkedList<Integer>();
 		l2.insertAtEnd(5);
@@ -61,7 +61,7 @@ public class Adding2NumbersListRev
 		l2.insertAtEnd(5);
 		l2.printList();
 
-		LinkedList<Integer> l3 = addLists(null, l2);
+		LinkedList<Integer> l3 = addLists(l1, l2);
 		if (l3 != null)
 			l3.printList();
 	}

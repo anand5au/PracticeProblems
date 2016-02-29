@@ -64,11 +64,15 @@ public class Adding2NumbersList
 		l1.insertAtEnd(1);
 		l1.insertAtEnd(6);
 		l1.insertAtEnd(6);
+		
+//		l1.printList();
+//		l1.reverseList();
+//		l1.printList();
 
 		LinkedList<Integer> l2 = new LinkedList<Integer>();
-		// l2.insertAtEnd(5);
-		// l2.insertAtEnd(9);
-		// l2.insertAtEnd(5);
+		l2.insertAtEnd(5);
+		l2.insertAtEnd(9);
+		l2.insertAtEnd(5);
 
 		LinkedList<Integer> l3 = addLists(l1, l2);
 		if (l3 != null)

@@ -94,5 +94,22 @@ public class LinkedList<T>
 		}
 		System.out.println();
 	}
-
+	
+	void reverseList()
+	{
+		ListNode<T> curr = head;
+		ListNode<T> prev = null;
+		ListNode<T> next = null;
+		
+		while(curr != null)
+		{
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		
+		head = prev;
+	}
+	
 }
