@@ -1,21 +1,27 @@
 package problems;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class TrieNode
 {
-	char c;
-	HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
+	TrieNode[] children;
 	boolean isLeaf;
 
 	public TrieNode()
 	{
+		this.children = new TrieNode[256];
 	}
 
-	public TrieNode(char c)
+	public void printChildren()
 	{
-		this.c = c;
+		for (char i = 0; i < 256; i++)
+		{
+			if (children[i] == null)
+				continue;
+			if (children[i].isLeaf)
+				System.out.println(i);
+			else
+				System.out.print(i + "->");
+			children[i].printChildren();
+		}
 	}
 }
 
@@ -25,60 +31,39 @@ public class Trie
 
 	public Trie()
 	{
-		root = new TrieNode();
+		this.root = new TrieNode();
 	}
 
-	public static void PrintChildren(HashMap<Character, TrieNode> children, int level)
+	public TrieNode getRoot()
 	{
-		if (children == null)
-			return;
+		return this.root;
+	}
 
-		for (Map.Entry<Character, TrieNode> entry : children.entrySet())
+	public void printChildren()
+	{
+		TrieNode t = getRoot();
+		for (char i = 0; i < 256; i++)
 		{
-			System.out.println("At level: " + level);
-			System.out.println(entry.getKey() + " : " + entry.getValue().c);
-			if (!entry.getValue().children.isEmpty())
-			{
-				System.out.println("Children:");
-				PrintChildren(entry.getValue().children, level + 1);
-			}
+			if (t.children[i] == null)
+				continue;
+			System.out.print(i + "->");
+			t.children[i].printChildren();
+			System.out.println();
 		}
 	}
 
 	// Inserts a word into the trie.
 	public void insert(String word)
 	{
-		HashMap<Character, TrieNode> children = root.children;
-		if (!children.isEmpty())
-		{
-			System.out.println("root children:");
-			PrintChildren(children, 0);
-		}
+		TrieNode t = getRoot();
 		for (int i = 0; i < word.length(); i++)
 		{
 			char c = word.charAt(i);
-			System.out.println("Processing char " + c);
-			TrieNode t;
-			if (children.containsKey(c))
-			{
-				t = children.get(c);
-			}
-			else
-			{
-				t = new TrieNode(c);
-				children.put(c, t);
-			}
-
-			children = t.children;
-			if (!children.isEmpty())
-			{
-				System.out.println("new children:");
-				PrintChildren(children, 0);
-			}
-			// set leaf node
-			if (i == word.length() - 1)
-				t.isLeaf = true;
+			if (t.children[c] == null)
+				t.children[c] = new TrieNode();
+			t = t.children[c];
 		}
+		t.isLeaf = true;
 	}
 
 	// Returns if the word is in the trie.
@@ -86,8 +71,8 @@ public class Trie
 	{
 		TrieNode t = searchNode(word);
 
-		if (t != null && t.isLeaf)
-			return true;
+		if (t != null)
+			return t.isLeaf;
 		else
 			return false;
 	}
@@ -104,20 +89,14 @@ public class Trie
 
 	public TrieNode searchNode(String str)
 	{
-		Map<Character, TrieNode> children = root.children;
-		TrieNode t = null;
+		TrieNode t = getRoot();
 		for (int i = 0; i < str.length(); i++)
 		{
 			char c = str.charAt(i);
-			if (children.containsKey(c))
-			{
-				t = children.get(c);
-				children = t.children;
-			}
+			if (t.children[c] != null)
+				t = t.children[c];
 			else
-			{
 				return null;
-			}
 		}
 		return t;
 	}
@@ -125,12 +104,13 @@ public class Trie
 	public static void main(String args[])
 	{
 		Trie t = new Trie();
-		t.insert("to");
-		t.insert("ten");
-		t.insert("ted");
-		t.insert("tea");
-		t.insert("inn");
-		System.out.println("Searching...");
-		System.out.println(t.search("ten"));
+		t.insert("cat");
+		t.insert("cater");
+		t.insert("base");
+		t.insert("basement");
+		t.insert("baseline");
+		t.printChildren();
+		System.out.println(t.search("cat"));
+		System.out.println(t.search("cate"));
 	}
 }

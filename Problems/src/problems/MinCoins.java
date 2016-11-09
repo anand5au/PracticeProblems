@@ -37,9 +37,7 @@ public class MinCoins
 				}
 			}
 		}
-		for (int i = 0; i < table.length; i++)
-			System.out.print(table[i] + " ");
-		System.out.println();
+
 		return table[V];
 	}
 
@@ -69,7 +67,7 @@ public class MinCoins
 
 	public static void main(String[] args)
 	{
-		int coins[] = { 3, 5 };
+		int coins[] = { 3, 5, 7 };
 		System.out.println(new Date());
 		System.out.println("Minimum coins required is " + minCoinsFast(coins, coins.length, 103));
 		System.out.println(new Date());

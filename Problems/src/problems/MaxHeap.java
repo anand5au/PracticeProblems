@@ -65,7 +65,7 @@ public class MaxHeap
 		}
 	}
 
-	public void maxHeap() // this function is just to form a minheap from existing array 
+	public void maxHeap() // this function is just to form a maxheap from existing array 
 	{
 		for (int pos = (size / 2); pos >= 1; pos--)
 			maxHeapify(pos);
