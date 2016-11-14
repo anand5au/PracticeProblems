@@ -64,10 +64,10 @@ public class Adding2NumbersList
 		l1.insertAtEnd(1);
 		l1.insertAtEnd(6);
 		l1.insertAtEnd(6);
-		
-//		l1.printList();
-//		l1.reverseList();
-//		l1.printList();
+
+		// l1.printList();
+		// l1.setHead(l1.reverseList(l1.getHead()));
+		// l1.printList();
 
 		LinkedList<Integer> l2 = new LinkedList<Integer>();
 		l2.insertAtEnd(5);

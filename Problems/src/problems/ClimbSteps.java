@@ -20,6 +20,6 @@ public class ClimbSteps
 	{
 		int[] arr = new int[37];
 		Arrays.fill(arr, -1);
-		System.out.println(countWays(3, arr));
+		System.out.println(countWays(36, arr));
 	}
 }

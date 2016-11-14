@@ -1,6 +1,8 @@
 package problems;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MaxSet
 {
@@ -25,8 +27,7 @@ public class MaxSet
 			if (B[i] > 0)
 				continue;
 
-			while (AddToSet(A, B, i, 1))
-				;
+			while (AddToSet(A, B, i, 1));
 			System.out.println(set);
 			System.out.println(Arrays.toString(B));
 
