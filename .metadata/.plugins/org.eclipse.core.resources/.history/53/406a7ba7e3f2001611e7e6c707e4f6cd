@@ -1,0 +1,15 @@
+package problems;
+
+public class MagicIndex
+{
+	static int magicIndex(int[] a)
+	{
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		int a[] = { -1, 0, 1, 2, 3, 4, 5, 6 };
+		System.out.println(magicIndex(a));
+	}
+}

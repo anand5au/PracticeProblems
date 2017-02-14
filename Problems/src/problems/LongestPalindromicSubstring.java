@@ -10,20 +10,20 @@ public class LongestPalindromicSubstring
 		String longest = "";
 		for (int i = 0; i < len; i++)
 		{
-			String tmp = isPalindrome(s, i, i);
+			String tmp = getPalindrome(s, i, i);
 			if (tmp.length() > longest.length())
 				longest = tmp;
 
-			tmp = isPalindrome(s, i, i + 1);
+			tmp = getPalindrome(s, i, i + 1);
 			if (tmp.length() > longest.length())
 				longest = tmp;
 		}
 		return longest;
 	}
 
-	private static String isPalindrome(String s, int start, int end)
+	private static String getPalindrome(String s, int start, int end)
 	{
-		while (start >= 0 && end <= s.length() - 1 && (s.charAt(start) == s.charAt(end)))
+		while (start >= 0 && end < s.length() && (s.charAt(start) == s.charAt(end)))
 		{
 			start--;
 			end++;

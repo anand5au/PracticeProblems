@@ -19,7 +19,18 @@ class TrieNode
 			if (children[i].isLeaf)
 				System.out.println(i);
 			else
-				System.out.print(i + "->");
+				System.out.print(i);
+			children[i].printChildren();
+		}
+	}
+
+	public void printChildren(String prefix)
+	{
+		for (char i = 0; i < 256; i++)
+		{
+			if (children[i] == null)
+				continue;
+			System.out.print(prefix);
 			children[i].printChildren();
 		}
 	}
@@ -46,7 +57,7 @@ public class Trie
 		{
 			if (t.children[i] == null)
 				continue;
-			System.out.print(i + "->");
+			System.out.print(i);
 			t.children[i].printChildren();
 			System.out.println();
 		}
@@ -87,6 +98,14 @@ public class Trie
 			return true;
 	}
 
+	public void autoComplete(String s)
+	{
+		TrieNode t = searchNode(s);
+		if (t.isLeaf)
+			System.out.println(s);
+		t.printChildren(s);
+	}
+
 	public TrieNode searchNode(String str)
 	{
 		TrieNode t = getRoot();
@@ -110,7 +129,8 @@ public class Trie
 		t.insert("basement");
 		t.insert("baseline");
 		t.printChildren();
-		System.out.println(t.search("cat"));
-		System.out.println(t.search("cate"));
+		// System.out.println(t.search("cat"));
+		// System.out.println(t.search("cate"));
+		t.autoComplete("cat");
 	}
 }

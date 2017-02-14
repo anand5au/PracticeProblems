@@ -1,6 +1,7 @@
 package problems;
 
-import java.util.PriorityQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class NextBiggestString
 {
@@ -11,32 +12,32 @@ public class NextBiggestString
 		char temp = 0;
 		StringBuilder sb = new StringBuilder(in);
 		StringBuilder sb1 = new StringBuilder();
-		PriorityQueue<Character> minHeap = new PriorityQueue<Character>();
+		Queue<Character> queue = new LinkedList<Character>();
 		for (; i > 0; i--)
 		{
 			char a = in.charAt(i);
 			char b = in.charAt(i - 1);
 			if (a <= b)
 			{
-				minHeap.add(a);
+				queue.add(a);
 				continue;
 			}
-			minHeap.add(a);
+			queue.add(a);
 
-			System.out.println("heap " + minHeap.toString());
+			System.out.println("queue " + queue.toString());
 
-			temp = minHeap.poll();
+			temp = queue.poll();
 			while (temp <= b)
 			{
 				sb1.append(temp);
-				temp = minHeap.poll();
+				temp = queue.poll();
 			}
 			System.out.println("sb1: " + sb1.toString());
 			sb.setCharAt(i - 1, temp);
 			sb1.append(b);
 
-			while (!minHeap.isEmpty())
-				sb1.append(minHeap.poll());
+			while (!queue.isEmpty())
+				sb1.append(queue.poll());
 			break;
 		}
 		System.out.println("sb1: " + sb1.toString());

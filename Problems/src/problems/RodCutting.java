@@ -1,5 +1,7 @@
 package problems;
 
+import java.util.Arrays;
+
 public class RodCutting
 {
 	static int cutRod(int price[], int n)
@@ -13,12 +15,13 @@ public class RodCutting
 				max_val = Math.max(max_val, price[j] + max[i - j - 1]);
 			max[i] = max_val;
 		}
+		System.out.println(Arrays.toString(max));
 		return max[n];
 	}
 
 	public static void main(String args[])
 	{
-		int arr[] = new int[] { 1, 5, 8, 9, 10, 17, 17, 20 };
+		int arr[] = new int[] { 3, 7, 8, 9, 10, 17, 17, 20 };
 		int size = arr.length;
 		System.out.println("Maximum Obtainable Value is " + cutRod(arr, size));
 

@@ -4,13 +4,13 @@ public class Adding2NumbersList
 {
 	static int carry = 0;
 
-	private static void padZeros(LinkedList<Integer> l, int len)
+	private static void padZeros(MyLinkedList<Integer> l, int len)
 	{
 		for (int i = 0; i < len; i++)
 			l.insertAtStart(0);
 	}
 
-	private static LinkedList<Integer> addLists(LinkedList<Integer> l1, LinkedList<Integer> l2)
+	private static MyLinkedList<Integer> addLists(MyLinkedList<Integer> l1, MyLinkedList<Integer> l2)
 	{
 		if (l1 == null && l2 == null)
 			return null;
@@ -31,7 +31,7 @@ public class Adding2NumbersList
 
 		l1.printList();
 		l2.printList();
-		LinkedList<Integer> l3 = new LinkedList<Integer>();
+		MyLinkedList<Integer> l3 = new MyLinkedList<Integer>();
 		l3.setHead(addLists(l1.getHead(), l2.getHead()));
 
 		if (carry > 0)
@@ -59,7 +59,7 @@ public class Adding2NumbersList
 
 	public static void main(String[] args)
 	{
-		LinkedList<Integer> l1 = new LinkedList<Integer>();
+		MyLinkedList<Integer> l1 = new MyLinkedList<Integer>();
 		l1.insertAtEnd(7);
 		l1.insertAtEnd(1);
 		l1.insertAtEnd(6);
@@ -69,12 +69,12 @@ public class Adding2NumbersList
 		// l1.setHead(l1.reverseList(l1.getHead()));
 		// l1.printList();
 
-		LinkedList<Integer> l2 = new LinkedList<Integer>();
+		MyLinkedList<Integer> l2 = new MyLinkedList<Integer>();
 		l2.insertAtEnd(5);
 		l2.insertAtEnd(9);
 		l2.insertAtEnd(5);
 
-		LinkedList<Integer> l3 = addLists(l1, l2);
+		MyLinkedList<Integer> l3 = addLists(l1, l2);
 		if (l3 != null)
 			l3.printList();
 	}

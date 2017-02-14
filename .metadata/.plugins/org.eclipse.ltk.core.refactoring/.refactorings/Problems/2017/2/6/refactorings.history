@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;problems.LongestPalindromicSubstring.isPalindrome(...)&apos; to &apos;getPalindrome&apos;&#x0A;- Original project: &apos;Problems&apos;&#x0A;- Original element: &apos;problems.LongestPalindromicSubstring.isPalindrome(...)&apos;&#x0A;- Renamed element: &apos;problems.LongestPalindromicSubstring.getPalindrome(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;isPalindrome&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;problems{LongestPalindromicSubstring.java[LongestPalindromicSubstring~isPalindrome~QString;~I~I" name="getPalindrome" references="true" stamp="1486663243923" version="1.0"/>
+</session>

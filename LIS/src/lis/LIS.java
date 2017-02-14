@@ -1,5 +1,6 @@
 package lis;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class LIS
@@ -31,6 +32,19 @@ public class LIS
 			if (max < L[i])
 				max = L[i];
 		}
+
+		System.out.println(Arrays.toString(L));
+		int len = n - 1;
+		int lis[] = new int[max];
+		int i = max;
+		while (len >= 0)
+		{
+			while (len >= 0 && L[len] != i)
+				len--;
+			if (len >= 0)
+				lis[--i] = ar[len--];
+		}
+		System.out.println(Arrays.toString(lis));
 		return max;
 	}
 
@@ -41,7 +55,7 @@ public class LIS
 		int ar[] = new int[n];
 		for (int i = 0; i < n; i++)
 			ar[i] = sc.nextInt();
-
+		sc.close();
 		System.out.println(longestIncreasingSubSeq(ar, n));
 	}
 }

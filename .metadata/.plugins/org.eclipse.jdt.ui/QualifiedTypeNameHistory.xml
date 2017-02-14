@@ -1,2 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="problems.DirEntry"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.util.Deque"/>
+<fullyQualifiedTypeName name="java.util.ArrayDeque"/>
+<fullyQualifiedTypeName name="problems.TrieNode"/>
+<fullyQualifiedTypeName name="java.lang.Character"/>
+<fullyQualifiedTypeName name="java.util.PriorityQueue"/>
+<fullyQualifiedTypeName name="javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="problems.Point"/>
+<fullyQualifiedTypeName name="problems.LinkedList"/>
+<fullyQualifiedTypeName name="problems.QueueNode"/>
+<fullyQualifiedTypeName name="problems.MazeNode"/>
+<fullyQualifiedTypeName name="problems.FindAnagrams"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="problems.WeightedGraph"/>
+<fullyQualifiedTypeName name="problems.GraphNode"/>
+<fullyQualifiedTypeName name="problems.DirectedGraph"/>
+<fullyQualifiedTypeName name="java.util.Stack"/>
+<fullyQualifiedTypeName name="java.lang.Comparable"/>
+<fullyQualifiedTypeName name="problems.KGraph.KEdge"/>
+<fullyQualifiedTypeName name="problems.KGraph.KSubset"/>
+<fullyQualifiedTypeName name="problems.RotatedArray"/>
+<fullyQualifiedTypeName name="problems.WiggleSort"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="problems.BST"/>
+<fullyQualifiedTypeName name="problems.ListNode"/>
+<fullyQualifiedTypeName name="problems.TreeNode"/>
+<fullyQualifiedTypeName name="problems.BinaryTree"/>
+<fullyQualifiedTypeName name="problems.MyLinkedList"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="problems.IncDecSeqWindow.Direction"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+</qualifiedTypeNameHistroy>

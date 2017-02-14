@@ -28,11 +28,11 @@ public class FindMutation
 		if (!bankStrings.contains(end))
 			return -1;
 
-		int count = minMutation(start, end, bank, 0, bankStrings);
+		int count = minMutation(start, end, bankStrings);
 		return count == 0 ? -1 : count;
 	}
 
-	public static int minMutation(String start, String end, String[] bank, int count, Set<String> bankStrings)
+	public static int minMutation(String start, String end, Set<String> bankStrings)
 	{
 		List<Integer> indices = new ArrayList<>();
 		int length = start.length();
@@ -47,7 +47,7 @@ public class FindMutation
 		{
 			temp = start.substring(0, i) + "" + end.charAt(i) + "" + start.substring(i + 1, length);
 			if (bankStrings.contains(temp))
-				curCount = 1 + minMutation(temp, end, bank, count, bankStrings);
+				curCount = 1 + minMutation(temp, end, bankStrings);
 		}
 		return curCount;
 	}

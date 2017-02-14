@@ -28,7 +28,10 @@ public class MaxHeap
 
 	private boolean isLeaf(int pos)
 	{
-		if (pos > (size / 2) && pos <= size) { return true; }
+		if (pos > (size / 2) && pos <= size)
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -42,12 +45,12 @@ public class MaxHeap
 
 	private void maxHeapify(int pos)
 	{
-		while(!isLeaf(pos))
+		while (!isLeaf(pos))
 		{
 			int newPos = leftChild(pos);
-			if((newPos < size) && Heap[newPos+1] > Heap[newPos])
+			if ((newPos < size) && Heap[newPos + 1] > Heap[newPos])
 				newPos++; // move to right child
-			if(Heap[newPos] < Heap[pos])
+			if (Heap[newPos] < Heap[pos])
 				break;
 			swap(pos, newPos);
 			pos = newPos;
@@ -65,7 +68,8 @@ public class MaxHeap
 		}
 	}
 
-	public void maxHeap() // this function is just to form a maxheap from existing array 
+	public void maxHeap() // this function is just to form a maxheap from
+							// existing array
 	{
 		for (int pos = (size / 2); pos >= 1; pos--)
 			maxHeapify(pos);
@@ -74,25 +78,25 @@ public class MaxHeap
 	public int remove()
 	{
 		int popped = Heap[FRONT];
-		if(size == FRONT)
+		if (size == FRONT)
 		{
 			size--;
 		}
 		else
-		{	
+		{
 			Heap[FRONT] = Heap[size--];
 			maxHeapify(FRONT);
 		}
 		return popped;
 	}
-	
+
 	public void removeAll()
 	{
-		while(size>0)
-			System.out.print(remove()+" ");
+		while (size > 0)
+			System.out.print(remove() + " ");
 		System.out.println();
 	}
-	
+
 	public static void main(String... arg)
 	{
 		System.out.println("The Max Heap is ");
@@ -107,8 +111,7 @@ public class MaxHeap
 		maxHeap.insert(22);
 		maxHeap.insert(9);
 		maxHeap.insert(100);
-		
+
 		maxHeap.removeAll();
-		
 	}
 }

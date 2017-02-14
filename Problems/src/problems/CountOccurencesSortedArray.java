@@ -49,7 +49,7 @@ public class CountOccurencesSortedArray
 
 	public static void main(String[] args)
 	{
-		int[] a = { 1, 2, 2, 2, 2, 2, 7, 8, 9 };
+		int[] a = { 2, 2, 2, 2, 2, 7, 8, 9 };
 		System.out.println(countOccurences(a, 2));
 	}
 }

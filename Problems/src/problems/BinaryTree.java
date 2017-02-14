@@ -1,7 +1,7 @@
 package problems;
 
-import java.util.*;
 import java.util.LinkedList;
+import java.util.Queue;
 
 class TreeNode
 {
@@ -28,12 +28,12 @@ public class BinaryTree
 	public int height(TreeNode root)
 	{
 		if (root == null)
-			return 0;
+			return -1;
 
 		return Math.max(height(root.left), height(root.right)) + 1;
 	}
 
-	public void printInOrder(TreeNode root)
+	public static void printInOrder(TreeNode root)
 	{
 		if (root == null)
 			return;
@@ -41,8 +41,9 @@ public class BinaryTree
 		System.out.print(root.data + " ");
 		printInOrder(root.right);
 	}
-	
+
 	static TreeNode last_node = null;
+
 	public TreeNode inOrderSuccessor(TreeNode root, TreeNode node)
 	{
 		if (root == null || node == null)
@@ -57,7 +58,7 @@ public class BinaryTree
 
 		return succ;
 	}
-	
+
 	public TreeNode find(TreeNode root, int d)
 	{
 		if (root == null)
@@ -67,20 +68,20 @@ public class BinaryTree
 			return root;
 
 		TreeNode temp;
-		
-		temp = find(root.left,d);
-		if(temp != null)
+
+		temp = find(root.left, d);
+		if (temp != null)
 			return temp;
-		temp = find(root.right,d);
+		temp = find(root.right, d);
 		return temp;
-		
+
 	}
-	
+
 	public TreeNode insert(TreeNode root, int d)
 	{
 		return null;
 	}
-	
+
 	public void printPaths()
 	{
 		int[] path = new int[height(root)];
@@ -93,16 +94,16 @@ public class BinaryTree
 			return;
 
 		path[level] = node.data;
-		//System.out.println("level: " + level);
-		
+		// System.out.println("level: " + level);
+
 		if (node.left == null && node.right == null)
 		{
 			printArray(path, level);
 		}
 		else
 		{
-			printPaths(node.left, path, level+1);
-			printPaths(node.right, path, level+1);
+			printPaths(node.left, path, level + 1);
+			printPaths(node.right, path, level + 1);
 		}
 	}
 
@@ -112,40 +113,79 @@ public class BinaryTree
 			System.out.print(ints[i] + " ");
 		System.out.println();
 	}
-	
+
 	public boolean BFS(TreeNode root, int d)
 	{
-		if(root == null) return false;
-		
-		if(root.data == d) return true;
-		
+		if (root == null)
+			return false;
+
+		if (root.data == d)
+			return true;
+
 		Queue<TreeNode> q = new LinkedList<TreeNode>();
 		TreeNode temp;
 		q.offer(root);
-		
-		while(!q.isEmpty())
+
+		while (!q.isEmpty())
 		{
-			 temp = q.poll();
-			 if(temp != null)
-			 {
-				 if(temp.data == d)
-					 return true;
-    			 if(temp.left != null)
-    				 q.offer(temp.left);
-    			 if(temp.right != null)
-    				 q.offer(temp.right);
-			 }
+			temp = q.poll();
+			if (temp != null)
+			{
+				if (temp.data == d)
+					return true;
+				if (temp.left != null)
+					q.offer(temp.left);
+				if (temp.right != null)
+					q.offer(temp.right);
+			}
 		}
 		return false;
 	}
-	
+
 	public boolean DFS(TreeNode root, int d)
 	{
-		if(root == null) return false;
-		
-		if(root.data == d) return true;
-		
-		return (DFS(root.left, d) || DFS(root.right,d));
+		if (root == null)
+			return false;
+
+		if (root.data == d)
+			return true;
+
+		return (DFS(root.left, d) || DFS(root.right, d));
 	}
-	
+
+	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
+	{
+		if (p == null || q == null)
+			return null;
+
+		if (root == null)
+			return null;
+
+		if (root == p || root == q)
+			return root;
+
+		TreeNode leftLCA = lowestCommonAncestor(root.left, p, q);
+		TreeNode rightLCA = lowestCommonAncestor(root.right, p, q);
+
+		if (leftLCA != null && rightLCA != null)
+			return root;
+
+		return (leftLCA == null) ? rightLCA : leftLCA;
+	}
+
+	private boolean isBST(TreeNode root, int min, int max)
+	{
+		if (root == null)
+			return true;
+
+		if (root.data <= min || root.data > max)
+			return false;
+
+		return isBST(root.left, min, root.data) && isBST(root.right, root.data, max);
+	}
+
+	public boolean isBST(TreeNode root)
+	{
+		return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
 }

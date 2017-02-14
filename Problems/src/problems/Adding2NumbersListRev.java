@@ -3,7 +3,7 @@ package problems;
 public class Adding2NumbersListRev
 {
 
-	public static LinkedList<Integer> addLists(LinkedList<Integer> l1, LinkedList<Integer> l2)
+	public static MyLinkedList<Integer> addLists(MyLinkedList<Integer> l1, MyLinkedList<Integer> l2)
 	{
 		if (l1 == null && l2 == null)
 			return null;
@@ -11,7 +11,7 @@ public class Adding2NumbersListRev
 		ListNode<Integer> t1 = (l1 != null) ? l1.getHead() : null;
 		ListNode<Integer> t2 = (l2 != null) ? l2.getHead() : null;
 
-		LinkedList<Integer> l3 = new LinkedList<Integer>();
+		MyLinkedList<Integer> l3 = new MyLinkedList<Integer>();
 
 		int sum = 0, carry = 0;
 
@@ -49,19 +49,19 @@ public class Adding2NumbersListRev
 
 	public static void main(String[] args)
 	{
-		 LinkedList<Integer> l1 = new LinkedList<Integer>();
+		 MyLinkedList<Integer> l1 = new MyLinkedList<Integer>();
 		 l1.insertAtEnd(7);
 		 l1.insertAtEnd(1);
 		 l1.insertAtEnd(6);
 		 l1.printList();
 
-		LinkedList<Integer> l2 = new LinkedList<Integer>();
+		MyLinkedList<Integer> l2 = new MyLinkedList<Integer>();
 		l2.insertAtEnd(5);
 		l2.insertAtEnd(9);
 		l2.insertAtEnd(5);
 		l2.printList();
 
-		LinkedList<Integer> l3 = addLists(l1, l2);
+		MyLinkedList<Integer> l3 = addLists(l1, l2);
 		if (l3 != null)
 			l3.printList();
 	}

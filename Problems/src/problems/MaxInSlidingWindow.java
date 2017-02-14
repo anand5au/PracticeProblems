@@ -7,6 +7,9 @@ public class MaxInSlidingWindow
 {
 	public static void printMaxInSlidingWindow(int[] a, int n, int k)
 	{
+		if (a == null || a.length == 0)
+			return;
+
 		Deque<Integer> deq = new ArrayDeque<Integer>();
 		int idx = 0;
 		for (; idx < k; idx++)
@@ -29,7 +32,8 @@ public class MaxInSlidingWindow
 				deq.pollLast();
 			deq.offer(idx);
 		}
-		System.out.print(a[deq.peek()]);
+		if (!deq.isEmpty())
+			System.out.print(a[deq.peek()]);
 	}
 
 	public static void understandDeque(int[] a, int n)

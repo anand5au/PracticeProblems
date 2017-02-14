@@ -2,12 +2,10 @@ package problems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class PowerSetIterative
 {
-
-	static String[] buildSubsequences(String s)
+	static ArrayList<String> buildSubsequences(String s)
 	{
 		ArrayList<String> subsequence = new ArrayList<String>();
 		int len = s.length();
@@ -17,26 +15,17 @@ public class PowerSetIterative
 			{
 				int l = subsequence.size();
 				for (int j = 0; j < l; j++)
-				{
 					subsequence.add(subsequence.get(j) + s.charAt(i));
-				}
 			}
 			subsequence.add(s.charAt(i) + "");
 		}
 
-		Collections.sort(subsequence);
-		String[] returnstr = new String[subsequence.size()];
-
-		for (int i = 0; i < subsequence.size(); i++)
-		{
-			returnstr[i] = subsequence.get(i);
-		}
-		return returnstr;
+		return subsequence;
 	}
 
 	public static void main(String[] args)
 	{
-		String[] arr = buildSubsequences("abcdef");
-		System.out.println(Arrays.toString(arr));
+		ArrayList<String> arr = buildSubsequences("abba");
+		System.out.println(Arrays.toString(arr.toArray(new String[0])));
 	}
 }
