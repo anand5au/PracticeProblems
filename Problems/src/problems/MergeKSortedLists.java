@@ -19,7 +19,6 @@ public class MergeKSortedLists
 					{
 						return o1.data - o2.data;
 					}
-
 				});
 
 		for (ListNode<Integer> list : lists)

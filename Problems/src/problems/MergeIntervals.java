@@ -55,8 +55,7 @@ public class MergeIntervals
 			}
 			else
 			{
-				Interval merged = new Interval(prev.start, Math.max(prev.end, curr.end));
-				prev = merged;
+				prev = new Interval(prev.start, Math.max(prev.end, curr.end));
 			}
 		}
 		ans.add(prev);

@@ -18,18 +18,18 @@ public class LongestDirectoryPath
 				continue;
 
 			int currLevel = 0, currLen = 0;
-			currLevel = entry.length() - entry.replaceAll("^\\s+", "").length();
-			String dirEntry = entry.substring(currLevel);
+			String dirEntry = entry.replaceAll("^\\s+", "");
+			int len = dirEntry.length();
+			currLevel = entry.length() - len;
 			if (dirEntry.indexOf('.') == -1)
 			{
-				currLen = ((currLevel == 0) ? 0 : (dirMap.get(currLevel - 1) + 1)) + dirEntry.length();
-				System.out.println("Putting " + dirEntry + ", level " + currLevel + " and len " + currLen);
+				currLen = ((currLevel == 0) ? 0 : (dirMap.get(currLevel - 1) + 1)) + len;
 				dirMap.put(currLevel, currLen);
 			}
 			else
 			{
-				maxLen = Math.max(maxLen, (dirMap.containsKey(currLevel - 1) ? (dirMap.get(currLevel - 1) + 1) : 0));
-				System.out.println("maxLen " + maxLen + " until file " + dirEntry);
+				maxLen = Math.max(maxLen,
+						(dirMap.containsKey(currLevel - 1) ? (dirMap.get(currLevel - 1) + 1) + len : len));
 			}
 		}
 		return maxLen;

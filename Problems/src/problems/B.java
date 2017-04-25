@@ -20,7 +20,7 @@ public class B extends A
 	{
 		A a = new A();
 		A b = new B();
-		// ((B) a).getA(); // throws a Runtime exception - ClassCastException
+		((B) a).getA(); // throws a Runtime exception - ClassCastException
 		((B) b).getA();
 
 		File file = new File("/Users/Anand/Documents/home_value.txt");

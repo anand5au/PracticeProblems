@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ClimbSteps
 {
-	public static int countWays(int s, int arr[])
+	public static long countWays(int s, long arr[])
 	{
 		if (s < 0)
 			return 0;
@@ -29,7 +29,7 @@ public class ClimbSteps
 
 	public static void main(String[] args)
 	{
-		int[] arr = new int[37];
+		long[] arr = new long[37];
 		Arrays.fill(arr, -1);
 		System.out.println(countWays(4, arr));
 		// System.out.println(countWaysSlow(36));

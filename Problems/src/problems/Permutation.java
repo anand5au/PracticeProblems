@@ -2,15 +2,15 @@ package problems;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 
 public class Permutation
 {
-	public static HashSet<String> perm(String s)
+	public static List<String> perm(String s)
 	{
 		if (s == null)
 			return null;
-		HashSet<String> permList = new HashSet<String>();
+		List<String> permList = new ArrayList<String>();
 		if (s.isEmpty())
 		{
 			permList.add("");
@@ -19,7 +19,7 @@ public class Permutation
 
 		char first = s.charAt(0);
 		String remaining = s.substring(1);
-		HashSet<String> inter = perm(remaining);
+		List<String> inter = perm(remaining);
 
 		for (String str : inter)
 		{
@@ -59,7 +59,7 @@ public class Permutation
 
 	public static void main(String[] args)
 	{
-		String a = "aaaaaaaaaaaaa";
+		String a = "aaaaaa";
 		System.out.println(new Date());
 		System.out.println(perm(a).size());
 		System.out.println(new Date());
