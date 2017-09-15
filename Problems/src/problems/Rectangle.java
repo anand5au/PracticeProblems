@@ -25,7 +25,7 @@ public class Rectangle
     {
         if (r1.leftTop.x >= r2.rightBottom.x || r2.leftTop.x >= r1.rightBottom.x)
             return false;
-        if (r1.leftTop.y <= r2.rightBottom.y || r2.leftTop.y < r1.rightBottom.y)
+        if (r1.leftTop.y <= r2.rightBottom.y || r2.leftTop.y <= r1.rightBottom.y)
             return false;
         return true;
     }
