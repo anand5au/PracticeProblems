@@ -1,32 +1,34 @@
 package problems;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SlidingWindowSum
 {
-	static int[] slidingWindowSum(int a[], int k)
-	{
-		if (a == null || a.length == 0)
-			return null;
-		int win[] = new int[k];
-		int sum = 0, i = 0, n = a.length, j = 0;
-		int res[] = new int[n - k + 1];
-		for (i = 0; i < n; i++)
-		{
-			sum -= win[i % k];
-			win[i % k] = a[i];
-			sum += win[i % k];
-			if (i >= k - 1)
-				res[j++] = sum;
-		}
-		if (i < k)
-			res[j++] = sum;
-		return res;
-	}
+    static List<Integer> slidingWindowSum(List<Integer> a, int k)
+    {
+        if (a == null || a.size() == 0)
+            return null;
 
-	public static void main(String[] args)
-	{
-		int[] a = { 1, 3, -1 };
-		System.out.println(Arrays.toString(slidingWindowSum(a, 3)));
-	}
+        int sum = 0, i = 0;
+        List<Integer> res = new ArrayList<Integer>();
+        for (i = 0; i < a.size(); i++)
+        {
+            sum += a.get(i);
+            if (i < k-1)
+                continue;
+            res.add(sum);
+            sum -= a.get(i-k+1);
+        }
+        if (i < k)
+            res.add(sum);
+        return res;
+    }
+
+    public static void main(String[] args)
+    {
+        List<Integer> l = new ArrayList<Integer>();
+        l.add(1); l.add(3); l.add(-1); l.add(1); l.add(3); l.add(-1);
+        System.out.println(slidingWindowSum(l, 3));
+    }
 }
