@@ -27,9 +27,7 @@ public class MaxValueSubTree
 		tree.root = tree.insert(tree.root, 16);
 		tree.root = tree.insert(tree.root, 9);
 		tree.root = tree.insert(tree.root, 5);
-		tree.printPaths();
 		System.out.println();
 		decorateTree(tree.root);
-		tree.printPaths();
 	}
 }

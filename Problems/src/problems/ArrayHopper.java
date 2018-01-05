@@ -1,5 +1,7 @@
 package problems;
 
+import java.util.LinkedList;
+
 public class ArrayHopper
 {
 	// prints the path from first touch down till end of the canyon
@@ -61,12 +63,43 @@ public class ArrayHopper
 		}
 
 		printPath(path, lastIndex);
-		System.out.print(lastIndex + ", out");
+		System.out.println(lastIndex + ", out");
+	}
+
+	private static void findSequence(int[] canyons)
+	{
+		// handle array empty or 0 at first index
+		LinkedList<Integer> touchDowns = new LinkedList<Integer>();
+		int max = 0, curPos = 0, hop = 0, i = 0;
+		for (; i < canyons.length; i++)
+		{
+			if (i > curPos)
+				break;
+			if (i > max)
+			{
+				max = curPos;
+				touchDowns.add(hop);
+			}
+			int sum = i + canyons[i];
+			if (sum > curPos)
+				hop = i;
+			curPos = Math.max(curPos, sum);
+		}
+
+		if ((i > max) && (touchDowns.isEmpty() || touchDowns.peekLast() != hop))
+			touchDowns.add(hop);
+
+		System.out.println(max);
+		if (max >= canyons.length - 1)
+			System.out.println(touchDowns);
+		else
+			System.out.println("failure");
 	}
 
 	public static void main(String args[]) throws Exception
 	{
-		int[] canyons = { 1, 0, 0, 4, 0, 0, 0, 2, 0 };
+		int[] canyons = { 2, 3 };
 		findPath(canyons);
+		findSequence(canyons);
 	}
 }
